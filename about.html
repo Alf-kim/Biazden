@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" href="images/logo.png" type="image/x-icon"> 
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us - Biaz Store</title>
+  <style>
+    body { font-family: Arial, sans-serif; background:#f9f9f9; margin:0; padding:0; }
+    .navbar {
+      display:flex; justify-content:space-between; align-items:center;
+      background:black; color:white; padding:10px 20px;
+    }
+    .navbar .logo { display:flex; align-items:center; gap:10px; font-size:20px; font-weight:bold; }
+    .navbar img { height:40px; }
+    .menu-toggle { font-size:28px; cursor:pointer; }
+    .menu {
+      display:none; flex-direction:column; position:absolute; top:60px; right:20px;
+      background:white; box-shadow:0 0 10px rgba(0,0,0,0.2); border-radius:5px;
+    }
+    .menu a { padding:10px; color:black; text-decoration:none; border-bottom:1px solid #ddd; }
+    .menu a:hover { background:#eee; }
+    .menu.show { display:flex; }
+    .about-box { max-width:700px; margin:80px auto; background:#fff; padding:20px; border-radius:10px; box-shadow:0 0 10px rgba(0,0,0,0.1); }
+  </style>
+</head>
+<body>
+
+  <div class="navbar">
+    <div class="logo">
+      <img src="images/logo.png" alt="Biaz Store Logo">
+      <span>Biaz Store</span>
+    </div>
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+    <div class="menu" id="menu">
+      <a href="index.html">Home</a>
+      <a href="about.html">About Us</a>
+    </div>
+  </div>
+
+  <div class="about-box">
+    <h2>About Us</h2>
+    <p>Welcome to <strong>Biaz Store</strong>! 🌸  
+    We provide quality <em>perfumes</em>, <em>lip oils</em>, and <em>stickers</em> that bring style and elegance into your life.  
+    Our goal is to offer premium products at affordable prices, with a smooth and professional shopping experience. 💎</p>
+    <p>Thank you for supporting us! 🖤</p>
+  </div>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById("menu").classList.toggle("show");
+    }
+  </script>
+
+</body>
+</html>

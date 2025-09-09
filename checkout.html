@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" href="images/logo.png" type="image/x-icon"> 
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout - Biaz Store</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* ✅ Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: black;
+      color: white;
+      padding: 10px 20px;
+    }
+    .navbar .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 20px;
+      font-weight: bold;
+    }
+    .navbar img {
+      height: 40px;
+    }
+    .menu-toggle {
+      font-size: 28px;
+      cursor: pointer;
+    }
+    .menu {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      top: 60px;
+      right: 20px;
+      background: white;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      border-radius: 5px;
+      overflow: hidden;
+    }
+    .menu a {
+      padding: 10px;
+      color: black;
+      text-decoration: none;
+      border-bottom: 1px solid #ddd;
+    }
+    .menu a:hover {
+      background: #eee;
+    }
+    .menu.show {
+      display: flex;
+    }
+
+    
+    .checkout-box {
+      background: #fff;
+      padding: 20px;
+      max-width: 500px;
+      margin: 80px auto; 
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    input, select, button {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background: green;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: darkgreen;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ✅ Navbar -->
+  <div class="navbar">
+    <div class="logo">
+      <img src="images/logo.png" alt="Biaz Store Logo">
+      <span>Biaz Store</span>
+    </div>
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+    <div class="menu" id="menu">
+      <a href="index.html">Home</a>
+      <a href="about.html">About Us</a>
+    </div>
+  </div>
+
+  <!-- ✅ Checkout Box -->
+  <div class="checkout-box">
+    <h2>Checkout</h2>
+    <form action="https://formspree.io/f/xpwjbznz" method="POST">
+      <label>Full Name</label>
+      <input type="text" name="name" required>
+
+      <label>Email</label>
+      <input type="email" name="email" required>
+
+      <label>Phone Number</label>
+      <input type="text" name="phone" required>
+
+      <label>Country</label>
+      <input type="text" name="country" required>
+
+      <label>Province</label>
+      <input type="text" name="province" required>
+
+      <label>Postal Code</label>
+      <input type="text" name="postal_code" required>
+
+      <label>Address</label>
+      <input type="text" name="address" required>
+
+      <!-- Product & Price shown -->
+      <p><strong>Product:</strong> <span id="productName"></span></p>
+      <p><strong>Price:</strong> PKR <span id="productPrice"></span></p>
+
+      <!-- Hidden inputs that get sent to your email -->
+      <input type="hidden" name="product" id="productInput">
+      <input type="hidden" name="price" id="priceInput">
+     <input type="hidden" name="_redirect" value="thankyou.html">
+
+
+
+      <button type="submit">Confirm Order</button>
+    </form>
+  </div>
+
+  <script>
+    // ✅ Mobile menu toggle
+    function toggleMenu() {
+      document.getElementById("menu").classList.toggle("show");
+    }
+
+    // ✅ Read product & price from URL
+    const params = new URLSearchParams(window.location.search);
+    const product = params.get("product");
+    const price = params.get("price");
+
+    if(product && price){
+      document.getElementById("productName").textContent = product;
+      document.getElementById("productPrice").textContent = price;
+      document.getElementById("productInput").value = product;
+      document.getElementById("priceInput").value = "PKR " + price;
+    }
+  </script>
+
+</body>
+</html>
